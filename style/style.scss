@@ -89,7 +89,7 @@ h1, h2, h3, h4, .header__logo {
 // --- HERO SECTION ---
 .hero {
   min-height: 100dvh;
-  padding: 160px 0 0;
+  // padding: 160px 0 0;
   background-color: $color-bg;
   overflow: hidden;
 
@@ -142,17 +142,17 @@ h1, h2, h3, h4, .header__logo {
     align-items: flex-end;
   }
 
-  &__image-wrapper {
-    width: 100%;
-    max-width: 550px;
-    aspect-ratio: 4 / 5;
-    background-color: #e3e6df;
-    border-radius: 400px 400px 0 0;
-    overflow: visible;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-  }
+  // &__image-wrapper {
+  //   width: 100%;
+  //   max-width: 550px;
+  //   aspect-ratio: 4 / 5;
+  //   background-color: #e3e6df;
+  //   border-radius: 400px 400px 0 0;
+  //   overflow: hidden;
+  //   display: flex;
+  //   align-items: flex-end;
+  //   justify-content: center;
+  // }
 
   &__img {
     width: 100%;

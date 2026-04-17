@@ -80,7 +80,6 @@ h1, h2, h3, h4, .header__logo {
 
 .hero {
   min-height: 100dvh;
-  padding: 160px 0 0;
   background-color: #f8f8f5;
   overflow: hidden;
 }
@@ -131,17 +130,6 @@ h1, h2, h3, h4, .header__logo {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-}
-.hero__image-wrapper {
-  width: 100%;
-  max-width: 550px;
-  aspect-ratio: 4/5;
-  background-color: #e3e6df;
-  border-radius: 400px 400px 0 0;
-  overflow: visible;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
 }
 .hero__img {
   width: 100%;
