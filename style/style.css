@@ -26,6 +26,10 @@ h1, h2, h3, h4, .header__logo {
   padding: 0 20px;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .header {
   position: fixed;
   top: 0;
