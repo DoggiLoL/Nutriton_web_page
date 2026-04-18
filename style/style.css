@@ -34,7 +34,7 @@ h1, h2, h3, h4, .header__logo {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(5px);
   z-index: 1000;
-  border-bottom: 1px solid rgba(125, 138, 119, 0.1);
+  border-bottom: 1px solid rgba(0, 114, 60, 0.1);
 }
 .header__container {
   display: flex;
@@ -45,7 +45,7 @@ h1, h2, h3, h4, .header__logo {
 }
 .header__logo {
   font-size: 1.5rem;
-  color: #7d8a77;
+  color: #00723c;
   text-decoration: none;
   z-index: 1000;
 }
@@ -94,7 +94,7 @@ h1, h2, h3, h4, .header__logo {
   transition: 0.3s;
 }
 .header__link:hover {
-  color: #7d8a77;
+  color: #00723c;
 }
 @media (max-width: 768px) {
   .header__link {
@@ -134,7 +134,7 @@ h1, h2, h3, h4, .header__logo {
   display: block;
   width: 100%;
   height: 2px;
-  background-color: #7d8a77;
+  background-color: #00723c;
   transition: all 0.3s ease;
 }
 .header__burger.active span:nth-child(1) {
@@ -172,7 +172,7 @@ h1, h2, h3, h4, .header__logo {
 }
 .hero__title {
   font-size: 4rem;
-  color: #7d8a77;
+  color: #00723c;
   margin-bottom: 24px;
 }
 .hero__title span {
@@ -227,7 +227,7 @@ h1, h2, h3, h4, .header__logo {
   font-family: "Cormorant Garamond", serif;
   font-style: italic;
   transform: rotate(12deg);
-  color: #7d8a77;
+  color: #00723c;
 }
 @media (max-width: 1200px) {
   .hero__badge {
@@ -256,7 +256,7 @@ h1, h2, h3, h4, .header__logo {
   margin-bottom: 30px;
 }
 .about__title span {
-  color: #7d8a77;
+  color: #00723c;
   font-style: italic;
 }
 .about__description {
@@ -282,7 +282,7 @@ h1, h2, h3, h4, .header__logo {
   text-align: center;
   flex: 0 1 calc(50% - 10px);
   min-width: 140px;
-  border: 1px solid rgba(125, 138, 119, 0.1);
+  border: 1px solid rgba(0, 114, 60, 0.1);
 }
 @media (max-width: 480px) {
   .about__stats .stat-item {
@@ -293,7 +293,7 @@ h1, h2, h3, h4, .header__logo {
 .about__stats .stat-item__num {
   display: block;
   font-size: 2.5rem;
-  color: #7d8a77;
+  color: #00723c;
   margin-bottom: 5px;
 }
 .about__stats .stat-item__text {
@@ -328,7 +328,7 @@ h1, h2, h3, h4, .header__logo {
 }
 .about .pillar-card:hover {
   transform: translateY(-10px);
-  border-color: #7d8a77;
+  border-color: #00723c;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 .about .pillar-card__title {
@@ -344,7 +344,7 @@ h1, h2, h3, h4, .header__logo {
   font-family: "Cormorant Garamond", serif;
   font-size: 1.8rem;
   font-style: italic;
-  color: #7d8a77;
+  color: #00723c;
   margin-bottom: 30px;
 }
 
@@ -358,19 +358,19 @@ h1, h2, h3, h4, .header__logo {
   transition: all 0.3s ease;
 }
 .btn--outline {
-  border: 1px solid #7d8a77;
-  color: #7d8a77;
+  border: 1px solid #00723c;
+  color: #00723c;
 }
 .btn--outline:hover {
-  background: #7d8a77;
+  background: #00723c;
   color: #fff;
 }
 .btn--filled {
-  background: #7d8a77;
+  background: #00723c;
   color: #fff;
-  border: 1px solid #7d8a77;
+  border: 1px solid #00723c;
 }
 .btn--filled:hover {
   background: transparent;
-  color: #7d8a77;
+  color: #00723c;
 }/*# sourceMappingURL=style.css.map */
