@@ -41,11 +41,38 @@ h1, h2, h3, h4, .header__logo {
   justify-content: space-between;
   align-items: center;
   height: 80px;
+  position: relative;
 }
 .header__logo {
   font-size: 1.5rem;
   color: #7d8a77;
   text-decoration: none;
+  z-index: 1002;
+}
+.header__nav {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+@media (max-width: 768px) {
+  .header__nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    height: 100dvh;
+    background: #fdfdfb;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    transition: 0.4s ease-in-out;
+    z-index: 1001;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.05);
+  }
+  .header__nav.active {
+    right: 0;
+  }
 }
 .header__menu {
   display: flex;
@@ -54,28 +81,70 @@ h1, h2, h3, h4, .header__logo {
 }
 @media (max-width: 768px) {
   .header__menu {
-    display: none;
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+    margin-bottom: 40px;
   }
 }
 .header__link {
   text-decoration: none;
   color: #2c2c2c;
   font-size: 0.95rem;
-  transition: color 0.3s ease;
+  transition: 0.3s;
 }
 .header__link:hover {
   color: #7d8a77;
+}
+@media (max-width: 768px) {
+  .header__link {
+    font-size: 1.4rem;
+  }
+}
+@media (max-width: 768px) {
+  .header__actions {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .header__actions .btn {
+    width: 100%;
+    max-width: 250px;
+    text-align: center;
+  }
 }
 .header__burger {
   display: none;
   background: none;
   border: none;
   cursor: pointer;
+  z-index: 1002;
+  padding: 0;
+  width: 30px;
+  height: 22px;
 }
 @media (max-width: 768px) {
   .header__burger {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
+}
+.header__burger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #7d8a77;
+  transition: all 0.3s ease;
+}
+.header__burger.active span:nth-child(1) {
+  transform: translateY(10px) rotate(45deg);
+}
+.header__burger.active span:nth-child(2) {
+  opacity: 0;
+}
+.header__burger.active span:nth-child(3) {
+  transform: translateY(-10px) rotate(-45deg);
 }
 
 .hero {
@@ -84,6 +153,7 @@ h1, h2, h3, h4, .header__logo {
 }
 @media (max-width: 992px) {
   .hero {
+    padding: 120px 0 40px;
     min-height: 100dvh;
   }
 }

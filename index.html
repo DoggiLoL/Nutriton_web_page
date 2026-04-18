@@ -8,22 +8,28 @@
 </head>
 <body>
     <header class="header">
-        <div class="container header__container">
-            <a href="/" class="header__logo">Anna Kovalenko</a>
-            <nav class="header__nav">
-                <ul class="header__menu">
-                    <li><a href="#about" class="header__link">About</a></li>
-                    <li><a href="#programs" class="header__link">Programs</a></li>
-                    <li><a href="#reviews" class="header__link">Reviews</a></li>
-                    <li><a href="#faq" class="header__link">FAQ</a></li>
-                </ul>
-            </nav>
+    <div class="container header__container">
+        <a href="/" class="header__logo">Anna Kovalenko</a>
+        
+        <nav class="header__nav" id="navMenu">
+            <ul class="header__menu">
+                <li><a href="#about" class="header__link">Про мене</a></li>
+                <li><a href="#programs" class="header__link">З чим я працюю</a></li>
+                <li><a href="#reviews" class="header__link">Відгуки</a></li>
+                <li><a href="#faq" class="header__link">Контакти</a></li>
+            </ul>
             <div class="header__actions">
                 <a href="#contact" class="btn btn--outline">Contact Me</a>
             </div>
-            <button class="header__burger" id="burger"><span></span></button>
-        </div>
-    </header>
+        </nav>
+        
+        <button class="header__burger" id="burger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</header>
 
     <main>
         <section class="hero">
@@ -96,6 +102,7 @@
             </div>
         </section>
     </main>
+    <script src="js/script.js"></script>
 </body>
 </html>
 
