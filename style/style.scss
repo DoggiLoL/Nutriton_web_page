@@ -58,7 +58,7 @@ h1, h2, h3, h4, .header__logo {
     font-size: 1.5rem;
     color: $color-olive;
     text-decoration: none;
-    z-index: 1002; // Выше меню
+    z-index: 1000; // Выше меню
   }
 
   &__nav {
