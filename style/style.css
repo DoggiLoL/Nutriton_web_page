@@ -79,9 +79,13 @@ h1, h2, h3, h4, .header__logo {
 }
 
 .hero {
-  min-height: 100dvh;
   background-color: #f8f8f5;
   overflow: hidden;
+}
+@media (max-width: 992px) {
+  .hero {
+    min-height: 100dvh;
+  }
 }
 .hero__container {
   display: grid;
