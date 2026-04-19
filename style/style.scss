@@ -495,7 +495,7 @@ html {
   // Акцентный баннер
   &__banner {
     background: $color-olive;
-    color: #fff;
+    color: $color-bg;
     padding: 40px 60px;
     border-radius: 30px;
     text-align: center;
