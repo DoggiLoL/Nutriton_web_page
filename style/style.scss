@@ -404,3 +404,167 @@ html {
     &:hover { background: transparent; color: $color-olive; }
   }
 }
+
+// --- PROGRAMS SECTION ---
+.programs {
+  padding: 100px 0;
+  background-color: $color-bg;
+
+  &__title {
+    font-size: 3rem;
+    margin-bottom: 50px;
+    text-align: center;
+    span { 
+      color: $color-olive; 
+      font-style: italic; 
+    }
+    @media (max-width: 576px) {
+      font-size: 2.5rem;
+    }
+  }
+
+  // Сетка основных направлений
+  &-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    margin-bottom: 60px;
+
+    @media (max-width: 992px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .program-card {
+    background: #fff;
+    padding: 40px;
+    border-radius: 30px;
+    border: 1px solid #eee;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+
+    @media (max-width: 576px) {
+      padding: 30px 20px;
+    }
+
+    &__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid rgba($color-olive, 0.1);
+    }
+
+    &__title {
+      font-size: 2rem;
+      color: $color-olive;
+    }
+
+    &__icon {
+      font-size: 1.5rem;
+    }
+  }
+
+  .program-list {
+    list-style: none;
+    
+    li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 15px;
+      font-size: 1.05rem;
+      line-height: 1.6;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 10px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background-color: $color-olive;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  // Акцентный баннер
+  &__banner {
+    background: $color-olive;
+    color: #fff;
+    padding: 40px 60px;
+    border-radius: 30px;
+    text-align: center;
+    margin-bottom: 80px;
+    box-shadow: 0 15px 40px rgba($color-olive, 0.2);
+
+    p {
+      font-family: $font-accent;
+      font-size: 1.8rem;
+      font-style: italic;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 768px) {
+      padding: 30px 20px;
+      p { font-size: 1.4rem; }
+    }
+  }
+}
+
+// --- CHECKLIST SECTION ---
+.checklist {
+  &__title {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+    color: $color-text;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    list-style: none;
+
+    @media (max-width: 992px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    background: #fff;
+    padding: 25px 30px;
+    border-radius: 20px;
+    border: 1px solid rgba($color-olive, 0.1);
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03);
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 576px) {
+      padding: 20px;
+    }
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    font-size: 1.3rem;
+    // Небольшая корректировка для визуального выравнивания по первой строке текста
+    margin-top: -2px; 
+  }
+}
