@@ -517,6 +517,9 @@ html {
 }
 
 // --- CHECKLIST SECTION ---
+.text-olive {
+  color: $color-olive;
+}
 .checklist {
   &__title {
     text-align: center;
@@ -562,9 +565,11 @@ html {
   }
 
   &__icon {
-    flex-shrink: 0;
-    font-size: 1.3rem;
-    // Небольшая корректировка для визуального выравнивания по первой строке текста
-    margin-top: -2px; 
+  flex-shrink: 0;
+  font-size: 1.4rem;
+  margin-top: -2px;
+  color: $color-olive; /* Красит символ ✔ в оливковый */
+  font-weight: 700;
   }
 }
+

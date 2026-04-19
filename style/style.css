@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500&display=swap");
 * {
   box-sizing: border-box;
@@ -482,6 +483,10 @@ html {
   }
 }
 
+.text-olive {
+  color: #00723c;
+}
+
 .checklist__title {
   text-align: center;
   font-size: 2.2rem;
@@ -524,6 +529,8 @@ html {
 }
 .checklist__icon {
   flex-shrink: 0;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   margin-top: -2px;
+  color: #00723c; /* Красит символ ✔ в оливковый */
+  font-weight: 700;
 }/*# sourceMappingURL=style.css.map */
