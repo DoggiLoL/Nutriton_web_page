@@ -573,3 +573,235 @@ html {
   }
 }
 
+// --- PRICES SECTION ---
+.prices {
+  padding: 100px 0;
+  background-color: #fff;
+
+  &__title {
+    font-size: 3rem;
+    margin-bottom: 60px;
+    text-align: center;
+    span { 
+      color: $color-olive; 
+      font-style: italic; 
+    }
+    @media (max-width: 576px) { font-size: 2.5rem; }
+  }
+
+  .mt-60 {
+    margin-top: 60px;
+  }
+
+  .price-category {
+    margin-bottom: 40px;
+
+    &__header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 30px;
+      
+      h3 {
+        font-size: 2.2rem;
+        color: $color-text;
+      }
+      span {
+        font-size: 1.8rem;
+      }
+    }
+  }
+
+  .price-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+
+    @media (max-width: 992px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .price-card {
+    background: $color-bg;
+    border-radius: 30px;
+    padding: 40px;
+    border: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.04);
+    }
+
+    @media (max-width: 576px) {
+      padding: 30px 20px;
+    }
+
+    &__top {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    &__name {
+      font-size: 1.8rem;
+      color: $color-olive;
+      margin-bottom: 5px;
+    }
+
+    &__desc {
+      font-size: 0.95rem;
+      color: #666;
+    }
+
+    &__process {
+      background: #fff;
+      padding: 15px;
+      border-radius: 15px;
+      font-size: 0.85rem;
+      text-align: center;
+      font-weight: 500;
+      color: $color-olive;
+      margin-bottom: 30px;
+      border: 1px dashed rgba($color-olive, 0.3);
+    }
+
+    &__body {
+      flex-grow: 1;
+      margin-bottom: 30px;
+
+      h5 {
+        font-family: $font-main;
+        font-size: 1.05rem;
+        font-weight: 600;
+        margin: 20px 0 10px;
+        color: $color-text;
+
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+
+      ul {
+        list-style: none;
+        li {
+          position: relative;
+          padding-left: 20px;
+          margin-bottom: 8px;
+          font-size: 0.95rem;
+          line-height: 1.5;
+
+          &::before {
+            content: '✔';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: $color-olive;
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+
+    &__packages {
+      border-top: 1px solid rgba($color-olive, 0.1);
+      padding-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    &--compact {
+      .price-card__top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+        margin-bottom: 30px;
+        
+        .price-card__name { margin: 0; }
+        span { font-size: 1.5rem; }
+      }
+    }
+
+    &--premium {
+      background: #fff;
+      border: 2px solid $color-olive;
+      box-shadow: 0 10px 30px rgba($color-olive, 0.08);
+
+      .price-card__name {
+        color: $color-text;
+      }
+    }
+  }
+
+  .package {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    padding: 15px 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+
+    @media (max-width: 480px) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    &__time {
+      font-weight: 600;
+      font-size: 1.05rem;
+      
+      small {
+        display: block;
+        font-weight: 400;
+        font-size: 0.8rem;
+        color: #666;
+        margin-top: 2px;
+      }
+    }
+
+    &__cost {
+      font-family: $font-accent;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: $color-olive;
+      white-space: nowrap;
+    }
+
+    &--single {
+      background: $color-bg;
+    }
+  }
+
+  .price-notes {
+    margin-top: 30px;
+    background: $color-bg;
+    padding: 25px 30px;
+    border-radius: 20px;
+    border-left: 4px solid $color-olive;
+
+    &__list {
+      list-style: none;
+      
+      li {
+        margin-bottom: 10px;
+        font-size: 0.95rem;
+        line-height: 1.6;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        strong {
+          color: $color-olive;
+        }
+      }
+    }
+  }
+}

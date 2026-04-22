@@ -533,4 +533,213 @@ html {
   margin-top: -2px;
   color: #00723c; /* Красит символ ✔ в оливковый */
   font-weight: 700;
+}
+
+.prices {
+  padding: 100px 0;
+  background-color: #fff;
+}
+.prices__title {
+  font-size: 3rem;
+  margin-bottom: 60px;
+  text-align: center;
+}
+.prices__title span {
+  color: #00723c;
+  font-style: italic;
+}
+@media (max-width: 576px) {
+  .prices__title {
+    font-size: 2.5rem;
+  }
+}
+.prices .mt-60 {
+  margin-top: 60px;
+}
+.prices .price-category {
+  margin-bottom: 40px;
+}
+.prices .price-category__header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+.prices .price-category__header h3 {
+  font-size: 2.2rem;
+  color: #2c2c2c;
+}
+.prices .price-category__header span {
+  font-size: 1.8rem;
+}
+.prices .price-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+@media (max-width: 992px) {
+  .prices .price-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.prices .price-card {
+  background: #f8f8f5;
+  border-radius: 30px;
+  padding: 40px;
+  border: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.prices .price-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.04);
+}
+@media (max-width: 576px) {
+  .prices .price-card {
+    padding: 30px 20px;
+  }
+}
+.prices .price-card__top {
+  margin-bottom: 20px;
+  text-align: center;
+}
+.prices .price-card__name {
+  font-size: 1.8rem;
+  color: #00723c;
+  margin-bottom: 5px;
+}
+.prices .price-card__desc {
+  font-size: 0.95rem;
+  color: #666;
+}
+.prices .price-card__process {
+  background: #fff;
+  padding: 15px;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  text-align: center;
+  font-weight: 500;
+  color: #00723c;
+  margin-bottom: 30px;
+  border: 1px dashed rgba(0, 114, 60, 0.3);
+}
+.prices .price-card__body {
+  flex-grow: 1;
+  margin-bottom: 30px;
+}
+.prices .price-card__body h5 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 20px 0 10px;
+  color: #2c2c2c;
+}
+.prices .price-card__body h5:first-child {
+  margin-top: 0;
+}
+.prices .price-card__body ul {
+  list-style: none;
+}
+.prices .price-card__body ul li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.prices .price-card__body ul li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #00723c;
+  font-size: 0.8rem;
+}
+.prices .price-card__packages {
+  border-top: 1px solid rgba(0, 114, 60, 0.1);
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.prices .price-card--compact .price-card__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  margin-bottom: 30px;
+}
+.prices .price-card--compact .price-card__top .price-card__name {
+  margin: 0;
+}
+.prices .price-card--compact .price-card__top span {
+  font-size: 1.5rem;
+}
+.prices .price-card--premium {
+  background: #fff;
+  border: 2px solid #00723c;
+  box-shadow: 0 10px 30px rgba(0, 114, 60, 0.08);
+}
+.prices .price-card--premium .price-card__name {
+  color: #2c2c2c;
+}
+.prices .package {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 15px 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+}
+@media (max-width: 480px) {
+  .prices .package {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
+.prices .package__time {
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+.prices .package__time small {
+  display: block;
+  font-weight: 400;
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 2px;
+}
+.prices .package__cost {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #00723c;
+  white-space: nowrap;
+}
+.prices .package--single {
+  background: #f8f8f5;
+}
+.prices .price-notes {
+  margin-top: 30px;
+  background: #f8f8f5;
+  padding: 25px 30px;
+  border-radius: 20px;
+  border-left: 4px solid #00723c;
+}
+.prices .price-notes__list {
+  list-style: none;
+}
+.prices .price-notes__list li {
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.prices .price-notes__list li:last-child {
+  margin-bottom: 0;
+}
+.prices .price-notes__list li strong {
+  color: #00723c;
 }/*# sourceMappingURL=style.css.map */
