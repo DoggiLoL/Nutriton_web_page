@@ -813,4 +813,43 @@ html {
 }
 .pillars-grid > *:nth-child(6), .programs-grid > *:nth-child(6), .checklist__grid > *:nth-child(6), .price-grid > *:nth-child(6) {
   transition-delay: 0.6s;
+}
+
+.price-addon-static {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 25px;
+  padding: 16px 20px;
+  background-color: rgba(139, 168, 136, 0.05); /* Очень легкий оливковый фон */
+  border: 1px dashed #8ba888; /* Здесь используй свою переменную $color-olive, если она есть */
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+.price-addon-static:hover {
+  background-color: rgba(139, 168, 136, 0.1);
+}
+.price-addon-static__icon {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+.price-addon-static__content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.price-addon-static__title {
+  font-weight: 600;
+  font-size: 16px;
+  color: #333; /* Твой основной цвет текста */
+}
+.price-addon-static__price {
+  font-size: 14px;
+  font-weight: 500;
+  color: #8ba888; /* Твой оливковый цвет */
+}
+
+.addition {
+  font-style: italic;
+  opacity: 0.5;
 }/*# sourceMappingURL=style.css.map */
