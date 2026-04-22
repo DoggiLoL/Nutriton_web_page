@@ -70,13 +70,18 @@ html {
     align-items: center;
     gap: 40px;
 
-    @media (max-width: 768px) {
+    // Промежуточный экран: меню ещё показываем, но сжимаем
+    @media (max-width: 1100px) and (min-width: 901px) {
+      gap: 20px;
+    }
+
+    @media (max-width: 900px) {
       position: fixed;
       top: 0;
-      right: -100%; // Спрятано
+      right: -100%;
       width: 80%;
       height: 100dvh;
-      background: #fdfdfb; // Твой светлый фон
+      background: #fdfdfb;
       flex-direction: column;
       align-items: center;
       justify-content: center;
@@ -86,7 +91,7 @@ html {
       box-shadow: -10px 0 30px rgba(0, 0, 0, 0.05);
 
       &.active {
-        right: 0; // Показываем
+        right: 0;
       }
     }
   }
@@ -96,7 +101,11 @@ html {
     gap: 40px;
     list-style: none;
 
-    @media (max-width: 768px) {
+    @media (max-width: 1100px) and (min-width: 901px) {
+      gap: 18px;
+    }
+
+    @media (max-width: 900px) {
       flex-direction: column;
       text-align: center;
       gap: 30px;
@@ -109,15 +118,21 @@ html {
     color: $color-text;
     font-size: 0.95rem;
     transition: 0.3s;
+    white-space: nowrap; // Запрещаем перенос пунктов меню
     &:hover { color: $color-olive; }
 
-    @media (max-width: 768px) {
+    @media (max-width: 1100px) and (min-width: 901px) {
+      font-size: 0.82rem;
+    }
+
+    @media (max-width: 900px) {
       font-size: 1.4rem;
+      white-space: normal;
     }
   }
 
   &__actions {
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
       width: 100%;
       display: flex;
       justify-content: center;
@@ -138,11 +153,10 @@ html {
     z-index: 1002;
     padding: 0;
     
-    // Фиксированные размеры, чтобы не схлопывался
     width: 30px; 
     height: 22px;
     
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -173,14 +187,17 @@ html {
 
 // --- HERO SECTION ---
 .hero {
-  
-  // padding: 160px 0 0;
+  padding: 80px 0 0; // Отступ равен высоте хедера на десктопе
   background-color: $color-bg;
   overflow: hidden;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
 
   @media (max-width: 992px) {
     padding: 120px 0 40px;
     min-height: 100dvh;
+    display: block;
   }
 
   &__container {
@@ -804,4 +821,52 @@ html {
       }
     }
   }
+}
+
+// --- АНИМАЦИИ И ДИНАМИКА ---
+
+// 1. Динамическая шапка при скролле
+.header {
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+  
+  &__container {
+    transition: height 0.3s ease; // Перенесено сюда — иначе transition не работал
+  }
+
+  &.header--scrolled {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    background: rgba(255, 255, 255, 0.98);
+    
+    .header__container {
+      height: 70px;
+    }
+  }
+}
+
+// Активный пункт меню
+.header__link.active {
+  color: $color-olive;
+  font-weight: 500;
+}
+
+// 2. Классы для появления при скролле (Scroll Reveal)
+.reveal-hidden {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+// Каскадная задержка для карточек (чтобы появлялись по очереди, а не все разом)
+.pillars-grid, .programs-grid, .checklist__grid, .price-grid {
+  > *:nth-child(1) { transition-delay: 0.1s; }
+  > *:nth-child(2) { transition-delay: 0.2s; }
+  > *:nth-child(3) { transition-delay: 0.3s; }
+  > *:nth-child(4) { transition-delay: 0.4s; }
+  > *:nth-child(5) { transition-delay: 0.5s; }
+  > *:nth-child(6) { transition-delay: 0.6s; }
 }
