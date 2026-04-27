@@ -4,13 +4,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const navMenu = document.querySelector('#navMenu');
     const body = document.body;
     const menuLinks = document.querySelectorAll('.header__link, .header__actions .btn');
-
+// == 1.1 Выводит меню с экрана
     burger.addEventListener('click', () => {
         burger.classList.toggle('active');
         navMenu.classList.toggle('active');
         body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
     });
-
+// === 1.2 Убирает меню с экрана
     menuLinks.forEach(link => {
         link.addEventListener('click', () => {
             burger.classList.remove('active');
