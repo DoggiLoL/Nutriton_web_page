@@ -183,4 +183,29 @@ document.addEventListener('DOMContentLoaded', () => {
         startAuto();
     }
 
+
+
+    // === 6. АККОРДЕОН FAQ ===
+    document.querySelectorAll('.faq__question').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const item   = btn.closest('.faq__item');
+            const answer = item.querySelector('.faq__answer');
+            const isOpen = item.classList.contains('is-open');
+
+            // Закрываем все открытые
+            document.querySelectorAll('.faq__item.is-open').forEach(el => {
+                el.classList.remove('is-open');
+                el.querySelector('.faq__answer').classList.remove('is-open');
+                el.querySelector('.faq__question').setAttribute('aria-expanded', 'false');
+            });
+
+            // Открываем кликнутый (если он не был открыт)
+            if (!isOpen) {
+                item.classList.add('is-open');
+                answer.classList.add('is-open');
+                btn.setAttribute('aria-expanded', 'true');
+            }
+        });
+    });
+
 });
