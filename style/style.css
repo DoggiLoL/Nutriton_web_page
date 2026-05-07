@@ -1239,6 +1239,16 @@ html {
   font-size: 0.78rem;
   color: rgba(255, 255, 255, 0.35);
 }
+.footer__oferta {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.35);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s;
+}
+.footer__oferta:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
 
 .faq {
   padding: 100px 0;
