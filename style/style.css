@@ -171,7 +171,7 @@ html {
 
 .hero {
   padding: 80px 0 0;
-  background-color: #f8f8f5;
+  background-color: #fbfbf8;
   overflow: hidden;
   min-height: 100dvh;
   display: flex;
@@ -367,7 +367,7 @@ html {
   }
 }
 .about__stats .stat-item {
-  background: #f8f8f5;
+  background: #fbfbf8;
   padding: 30px;
   border-radius: 20px;
   text-align: center;
@@ -494,7 +494,7 @@ html {
 
 .programs {
   padding: 100px 0;
-  background-color: #f8f8f5;
+  background-color: #fbfbf8;
 }
 .programs__title {
   font-size: 3rem;
@@ -573,7 +573,7 @@ html {
 }
 .programs__banner {
   background: #00723c;
-  color: #f8f8f5;
+  color: #fbfbf8;
   padding: 40px 60px;
   border-radius: 30px;
   text-align: center;
@@ -696,7 +696,7 @@ html {
   }
 }
 .prices .price-card {
-  background: #f8f8f5;
+  background: #fbfbf8;
   border-radius: 30px;
   padding: 40px;
   border: 1px solid #eee;
@@ -832,11 +832,11 @@ html {
   white-space: nowrap;
 }
 .prices .package--single {
-  background: #f8f8f5;
+  background: #fbfbf8;
 }
 .prices .price-notes {
   margin-top: 30px;
-  background: #f8f8f5;
+  background: #fbfbf8;
   padding: 25px 30px;
   border-radius: 20px;
   border-left: 4px solid #00723c;
@@ -947,7 +947,7 @@ html {
 
 .reviews {
   padding: 100px 0;
-  background-color: #f8f8f5;
+  background-color: #fbfbf8;
   overflow: hidden;
 }
 .reviews__header {
@@ -1123,6 +1123,16 @@ html {
     grid-template-columns: 1fr;
     gap: 36px;
   }
+}
+.footer__oferta {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.35);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s;
+}
+.footer__oferta:hover {
+  color: rgba(255, 255, 255, 0.7);
 }
 .footer__logo {
   font-family: "Cormorant Garamond", serif;

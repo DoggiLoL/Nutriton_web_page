@@ -3,7 +3,7 @@
 // Переменные
 $color-olive: #00723c;
 $color-text: #2c2c2c;
-$color-bg: #f8f8f5; // Светлый беж для фонов
+$color-bg: #fbfbf8; // Светлый беж для фонов
 $font-accent: 'Cormorant Garamond', serif; // Для заголовков и логотипа
 $font-main: 'Montserrat', sans-serif;    // Для основного текста
 
@@ -1128,6 +1128,15 @@ html {
       grid-template-columns: 1fr;
       gap: 36px;
     }
+  }
+
+  &__oferta {
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.35);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s;
+    &:hover { color: rgba(255, 255, 255, 0.7); }
   }
  
   &__logo {
