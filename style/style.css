@@ -1363,8 +1363,16 @@ html {
   padding-top: 48px;
   border-top: 1px solid rgba(0, 114, 60, 0.15);
 }
+.price-category--speaking .price-card {
+  text-align: center;
+}
 .prices .price-grid--3 {
   grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+}
+.prices .price-grid--3 .price-card {
+  width: 100%;
+  max-width: 340px;
 }
 @media (max-width: 900px) {
   .prices .price-grid--3 {
