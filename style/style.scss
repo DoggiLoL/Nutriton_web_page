@@ -292,6 +292,15 @@ html {
     @media (max-width: 400px)  { flex-direction: column; width: 100%; .btn { width: 100%; text-align: center; } }
   }
 
+  // Пометка "Працюю офіційно - ФОП" под кнопками
+  &__badge {
+    margin-top: 16px;
+    font-size: 0.85rem;
+    color: lighten($color-text, 30%);
+
+    @media (max-width: 992px) { text-align: center; }
+  }
+
   &__visual {
     position: relative;
     display: flex;
@@ -365,7 +374,7 @@ html {
       padding: 30px;
       border-radius: 20px;
       text-align: center;
-      flex: 0 1 calc(50% - 10px);
+      flex: 0 1 calc(33.333% - 14px);
       min-width: 140px;
       border: 1px solid rgba($color-olive, 0.1);
 
