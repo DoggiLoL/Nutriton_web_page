@@ -109,6 +109,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let current   = 0;
         let autoTimer = null;
         const INTERVAL = 3500; // пауза между слайдами, мс
+        const isEn = document.documentElement.lang === 'en';
+        const dotLabel = i => isEn ? `Review ${i}` : `Відгук ${i}`;
 
         const getVisible = () => {
             if (window.innerWidth <= 580) return 1;
@@ -122,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
             for (let i = 0; i <= max; i++) {
                 const dot = document.createElement('button');
                 dot.className = 'reviews__dot' + (i === current ? ' reviews__dot--active' : '');
-                dot.setAttribute('aria-label', `Відгук ${i + 1}`);
+                dot.setAttribute('aria-label', dotLabel(i + 1));
                 dot.addEventListener('click', () => { goTo(i); resetAuto(); });
                 dotsWrap.appendChild(dot);
             }
