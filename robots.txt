@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nutrition-page-anna-kovalenko.netlify.app/sitemap.xml
