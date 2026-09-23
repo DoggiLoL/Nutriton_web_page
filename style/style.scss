@@ -292,6 +292,11 @@ html {
     }
   }
 
+  // Жирная первая фраза в hero__text
+  &__lead {
+    font-weight: 800;
+  }
+
   // Три буллета-якоря доверия
   &__bullets {
     list-style: none;
