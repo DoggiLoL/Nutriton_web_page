@@ -1,0 +1,12 @@
+# Claude Code local tooling (session configs, not part of the site)
+.claude/
+
+# Editor
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node (on the off-chance npm tooling gets added later)
+node_modules/
