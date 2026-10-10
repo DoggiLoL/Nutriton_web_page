@@ -3,6 +3,42 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Автовыбор языка при первом визите: uk/ru или часовой пояс Украины → украинская версия,
+         остальные → английская. Не трогает поисковых роботов, переходы внутри сайта
+         и язык, выбранный кнопкой UA/EN. -->
+    <script>
+      (function () {
+        try {
+          if (/bot|crawl|spider|slurp|google|lighthouse|headless/i.test(navigator.userAgent)) return;
+          if (document.referrer.indexOf(location.origin) === 0) return;
+
+          var current = document.documentElement.lang === "en" ? "en" : "uk";
+          var wanted = null;
+          try { wanted = localStorage.getItem("lang"); } catch (e) {}
+
+          if (wanted !== "uk" && wanted !== "en") {
+            var langs = navigator.languages && navigator.languages.length
+              ? navigator.languages
+              : navigator.language ? [navigator.language] : [];
+            // Браузер не сообщил язык — оставляем ту версию, которую открыли
+            if (!langs.length) return;
+
+            // Украинцы с телефоном на английском: узнаём по часовому поясу
+            var tz = "";
+            try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch (e) {}
+            wanted = /^Europe\/(Kyiv|Kiev|Zaporozhye|Uzhgorod|Simferopol)$/.test(tz) ? "uk" : "en";
+
+            for (var i = 0; i < langs.length; i++) {
+              if (/^(uk|ru)(-|$)/i.test(langs[i])) { wanted = "uk"; break; }
+            }
+          }
+
+          if (wanted !== current) {
+            location.replace((wanted === "en" ? "/en/" : "/") + location.search + location.hash);
+          }
+        } catch (e) {}
+      })();
+    </script>
     <!-- ===== SEO & Open Graph ===== -->
     <meta
       name="description"
@@ -78,6 +114,13 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/img/icon.png" />
     <title>Анна Коваленко - дієтолог-психолог</title>
+    <!-- Шрифты: заранее открываем соединение, чтобы текст появился быстрее -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,300..800;1,400&display=swap"
+    />
     <link rel="stylesheet" href="/style/style.css" />
 
     <!-- Structured data (Google rich results) -->
@@ -1319,76 +1362,6 @@
                   />
                 </div>
               </div>
-
-              <div class="review-card">
-                <div class="review-card__screen">
-                  <img
-                    src="/img/reviews/review-26.jpg"
-                    alt="Відгук клієнта 26"
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-
-              <div class="review-card">
-                <div class="review-card__screen">
-                  <img
-                    src="/img/reviews/review-27.jpg"
-                    alt="Відгук клієнта 27"
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-
-              <div class="review-card">
-                <div class="review-card__screen">
-                  <img
-                    src="/img/reviews/review-28.jpg"
-                    alt="Відгук клієнта 28"
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-
-              <div class="review-card">
-                <div class="review-card__screen">
-                  <img
-                    src="/img/reviews/review-29.jpg"
-                    alt="Відгук клієнта 29"
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-
-              <div class="review-card">
-                <div class="review-card__screen">
-                  <img
-                    src="/img/reviews/review-30.jpg"
-                    alt="Відгук клієнта 30"
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-
-              <div class="review-card">
-                <div class="review-card__screen">
-                  <img
-                    src="/img/reviews/review-31.jpg"
-                    alt="Відгук клієнта 31"
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-
-              <div class="review-card">
-                <div class="review-card__screen">
-                  <img
-                    src="/img/reviews/review-32.jpg"
-                    alt="Відгук клієнта 32"
-                    loading="lazy"
-                  />
-                </div>
-              </div>
             </div>
 
             <button
@@ -1959,7 +1932,7 @@
             &copy; 2026 Anna Kovalenko. Всі права захищені.
           </p>
           <a
-            href="/documents/ДОГОВІР_ПУБЛІЧНОЇ_ОФЕРТИ_ФОП_Коваленко_Г_К_.pdf"
+            href="/documents/public-offer.pdf"
             class="footer__oferta"
             target="_blank"
             >Договір публічної оферти</a

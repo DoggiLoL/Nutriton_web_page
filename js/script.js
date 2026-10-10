@@ -28,6 +28,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
+    // === 1.3 ЗАПОМИНАЕМ ЯЗЫК, ВЫБРАННЫЙ КНОПКОЙ UA/EN ===
+    // Скрипт автовыбора в <head> потом уже не перебрасывает человека на другую версию
+    const langSwitch = document.querySelector('.header__lang-switch');
+    if (langSwitch) {
+        langSwitch.addEventListener('click', () => {
+            const target = document.documentElement.lang === 'en' ? 'uk' : 'en';
+            try { localStorage.setItem('lang', target); } catch (e) {}
+        });
+    }
+
+
     // === 2. ДИНАМИЧЕСКАЯ ШАПКА ===
     const header = document.querySelector('.header');
     
