@@ -6,6 +6,7 @@ $color-text: #2c2c2c;
 $color-bg: #fbfbf8; // Светлый беж для фонов
 $font-accent: "Cormorant Garamond", serif; // Для заголовков и логотипа
 $font-main: "Montserrat", sans-serif; // Для основного текста
+$icon-check: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
 
 // Базовый сброс и настройки
 * {
@@ -41,6 +42,20 @@ h4,
 
 html {
   scroll-behavior: smooth;
+}
+
+// SVG-иконки вместо эмодзи: размер = текущий font-size контейнера, цвет = цвет текста
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+  flex-shrink: 0;
+
+  &--flag {
+    width: 1.5em;
+    border-radius: 2px;
+  }
 }
 
 // --- HEADER ---
@@ -243,6 +258,32 @@ html {
     }
   }
 
+  // На мобильных: столбик, чтобы поднять кнопку записи над списком (через order)
+  &__content {
+    @media (max-width: 992px) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  // Круглый портрет — только на мобильных, вместо большого фото внизу
+  &__avatar {
+    display: none;
+
+    @media (max-width: 992px) {
+      display: block;
+      width: 150px;
+      height: 150px;
+      margin-bottom: 20px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: 50% 38%;
+      border: 4px solid #fff;
+      box-shadow: 0 10px 30px rgba($color-olive, 0.18);
+    }
+  }
+
   // Надпись над заголовком: "Дієтолог-психолог · Онлайн"
   &__eyebrow {
     display: inline-block;
@@ -292,9 +333,16 @@ html {
     }
   }
 
-  // Жирная первая фраза в hero__text
+  // Жирная первая фраза в hero__text — отдельной строкой
   &__lead {
+    display: block;
     font-weight: 800;
+    text-align: left;
+    margin-bottom: 1.7em;
+
+    @media (max-width: 992px) {
+      text-align: center;
+    }
   }
 
   // Три буллета-якоря доверия
@@ -304,13 +352,18 @@ html {
     flex-direction: column;
     gap: 10px;
 
+    // На мобильных список стоит по центру экрана, но пункты внутри — по левому краю
     @media (max-width: 992px) {
-      align-items: center;
+      order: 2;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
     }
 
     li {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 10px;
       font-size: 0.9rem;
       font-weight: 600;
@@ -319,6 +372,7 @@ html {
 
       svg {
         flex-shrink: 0;
+        margin-top: 3px; // галочка напротив первой строки текста
         color: $color-olive;
       }
 
@@ -336,7 +390,9 @@ html {
     flex-wrap: wrap;
 
     @media (max-width: 992px) {
+      order: 1;
       justify-content: center;
+      margin-bottom: 32px;
     }
     @media (max-width: 400px) {
       flex-direction: column;
@@ -357,6 +413,8 @@ html {
 
     @media (max-width: 992px) {
       text-align: center;
+      order: 3;
+      margin-bottom: 0;
     }
   }
 
@@ -365,6 +423,11 @@ html {
     display: flex;
     justify-content: center;
     align-items: flex-end;
+
+    // На мобильных фото уже показано круглым портретом наверху
+    @media (max-width: 992px) {
+      display: none;
+    }
   }
 
   &__image-wrapper {
@@ -448,6 +511,11 @@ html {
       min-width: 140px;
       border: 1px solid rgba($color-olive, 0.1);
 
+      // На мобильных меньше боковые отступы, чтобы длинные подписи помещались
+      @media (max-width: 768px) {
+        padding: 24px 10px;
+      }
+
       @media (max-width: 480px) {
         flex: 0 1 100%;
         max-width: 280px;
@@ -461,15 +529,29 @@ html {
       }
 
       &__text {
+        display: block;
         font-size: 0.75rem;
         text-transform: uppercase;
         letter-spacing: 1px;
+
+        @media (max-width: 768px) {
+          font-size: 0.7rem;
+          letter-spacing: 0.5px;
+        }
       }
     }
   }
 
   &__pillars {
     margin-bottom: 80px;
+  }
+
+  // Подводка под тремя карточками
+  &__pillars-note {
+    text-align: center;
+    max-width: 700px;
+    margin: 40px auto 0;
+    font-size: 1.1rem;
   }
 
   &__subtitle {
@@ -507,6 +589,12 @@ html {
       margin: -40px -40px 20px;
       object-fit: cover;
       border-radius: 30px 30px 0 0;
+    }
+
+    &__icon {
+      font-size: 1.4rem;
+      line-height: 1;
+      color: $color-olive;
     }
 
     &__title {
@@ -717,6 +805,7 @@ html {
       width: 100%;
       height: 340px;
       object-fit: cover;
+      object-position: 50% 60%;
       border-radius: 30px;
 
       @media (max-width: 576px) {
@@ -777,9 +866,9 @@ html {
   &__icon {
     flex-shrink: 0;
     font-size: 1.4rem;
-    margin-top: -2px;
-    color: $color-olive; /* Красит символ ✔ в оливковый */
-    font-weight: 700;
+    margin-top: 1px;
+    line-height: 1;
+    color: $color-olive;
   }
 }
 
@@ -798,6 +887,23 @@ html {
     }
     @media (max-width: 576px) {
       font-size: 2.5rem;
+    }
+  }
+
+  // Декоративная полоса со специями под заголовком
+  &__strip {
+    max-width: 760px;
+    margin: -20px auto 60px;
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 30px;
+
+      @media (max-width: 576px) {
+        border-radius: 20px;
+      }
     }
   }
 
@@ -916,13 +1022,17 @@ html {
           font-size: 0.95rem;
           line-height: 1.5;
 
+          // Галочка SVG-маской вместо символа ✔ — одинаково на всех устройствах
           &::before {
-            content: "✔";
+            content: "";
             position: absolute;
             left: 0;
-            top: 0;
-            color: $color-olive;
-            font-size: 0.8rem;
+            top: 0.35em;
+            width: 0.8rem;
+            height: 0.8rem;
+            background-color: $color-olive;
+            -webkit-mask: $icon-check no-repeat center / contain;
+            mask: $icon-check no-repeat center / contain;
           }
         }
       }
@@ -1118,7 +1228,9 @@ html {
 
   &__icon {
     font-size: 24px;
+    line-height: 1;
     flex-shrink: 0;
+    color: $color-olive;
   }
 
   &__content {
@@ -1509,6 +1621,7 @@ html {
       width: 100%;
       height: 280px;
       object-fit: cover;
+      object-position: 50% 20%;
       border-radius: 30px;
 
       @media (max-width: 576px) {

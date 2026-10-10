@@ -35,6 +35,18 @@ html {
   scroll-behavior: smooth;
 }
 
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+  flex-shrink: 0;
+}
+.icon--flag {
+  width: 1.5em;
+  border-radius: 2px;
+}
+
 .header {
   position: fixed;
   top: 0;
@@ -223,6 +235,29 @@ html {
     gap: 40px;
   }
 }
+@media (max-width: 992px) {
+  .hero__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.hero__avatar {
+  display: none;
+}
+@media (max-width: 992px) {
+  .hero__avatar {
+    display: block;
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: 50% 38%;
+    border: 4px solid #fff;
+    box-shadow: 0 10px 30px rgba(0, 114, 60, 0.18);
+  }
+}
 .hero__eyebrow {
   display: inline-block;
   font-size: 0.78rem;
@@ -271,7 +306,15 @@ html {
   }
 }
 .hero__lead {
+  display: block;
   font-weight: 800;
+  text-align: left;
+  margin-bottom: 1.7em;
+}
+@media (max-width: 992px) {
+  .hero__lead {
+    text-align: center;
+  }
 }
 .hero__bullets {
   list-style: none;
@@ -281,12 +324,16 @@ html {
 }
 @media (max-width: 992px) {
   .hero__bullets {
-    align-items: center;
+    order: 2;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
   }
 }
 .hero__bullets li {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px;
   font-size: 0.9rem;
   font-weight: 600;
@@ -295,6 +342,7 @@ html {
 }
 .hero__bullets li svg {
   flex-shrink: 0;
+  margin-top: 3px;
   color: #00723c;
 }
 .hero__bullets li span {
@@ -308,7 +356,9 @@ html {
 }
 @media (max-width: 992px) {
   .hero__actions {
+    order: 1;
     justify-content: center;
+    margin-bottom: 32px;
   }
 }
 @media (max-width: 400px) {
@@ -330,6 +380,8 @@ html {
 @media (max-width: 992px) {
   .hero__badge {
     text-align: center;
+    order: 3;
+    margin-bottom: 0;
   }
 }
 .hero__visual {
@@ -337,6 +389,11 @@ html {
   display: flex;
   justify-content: center;
   align-items: flex-end;
+}
+@media (max-width: 992px) {
+  .hero__visual {
+    display: none;
+  }
 }
 .hero__image-wrapper {
   position: relative;
@@ -420,6 +477,11 @@ html {
   min-width: 140px;
   border: 1px solid rgba(0, 114, 60, 0.1);
 }
+@media (max-width: 768px) {
+  .about__stats .stat-item {
+    padding: 24px 10px;
+  }
+}
 @media (max-width: 480px) {
   .about__stats .stat-item {
     flex: 0 1 100%;
@@ -433,12 +495,25 @@ html {
   margin-bottom: 5px;
 }
 .about__stats .stat-item__text {
+  display: block;
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
+@media (max-width: 768px) {
+  .about__stats .stat-item__text {
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+  }
+}
 .about__pillars {
   margin-bottom: 80px;
+}
+.about__pillars-note {
+  text-align: center;
+  max-width: 700px;
+  margin: 40px auto 0;
+  font-size: 1.1rem;
 }
 .about__subtitle {
   text-align: center;
@@ -474,6 +549,11 @@ html {
   margin: -40px -40px 20px;
   object-fit: cover;
   border-radius: 30px 30px 0 0;
+}
+.about .pillar-card__icon {
+  font-size: 1.4rem;
+  line-height: 1;
+  color: #00723c;
 }
 .about .pillar-card__title {
   font-size: 1.4rem;
@@ -659,6 +739,7 @@ html {
   width: 100%;
   height: 340px;
   object-fit: cover;
+  object-position: 50% 60%;
   border-radius: 30px;
 }
 @media (max-width: 576px) {
@@ -714,9 +795,9 @@ html {
 .checklist__icon {
   flex-shrink: 0;
   font-size: 1.4rem;
-  margin-top: -2px;
-  color: #00723c; /* Красит символ ✔ в оливковый */
-  font-weight: 700;
+  margin-top: 1px;
+  line-height: 1;
+  color: #00723c;
 }
 
 .prices {
@@ -735,6 +816,21 @@ html {
 @media (max-width: 576px) {
   .prices__title {
     font-size: 2.5rem;
+  }
+}
+.prices__strip {
+  max-width: 760px;
+  margin: -20px auto 60px;
+}
+.prices__strip img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 30px;
+}
+@media (max-width: 576px) {
+  .prices__strip img {
+    border-radius: 20px;
   }
 }
 .prices .mt-60 {
@@ -839,12 +935,15 @@ html {
   line-height: 1.5;
 }
 .prices .price-card__body ul li::before {
-  content: "✔";
+  content: "";
   position: absolute;
   left: 0;
-  top: 0;
-  color: #00723c;
-  font-size: 0.8rem;
+  top: 0.35em;
+  width: 0.8rem;
+  height: 0.8rem;
+  background-color: #00723c;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") no-repeat center/contain;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") no-repeat center/contain;
 }
 .prices .price-card__packages {
   border-top: 1px solid rgba(0, 114, 60, 0.1);
@@ -1018,7 +1117,9 @@ html {
 }
 .price-addon-static__icon {
   font-size: 24px;
+  line-height: 1;
   flex-shrink: 0;
+  color: #00723c;
 }
 .price-addon-static__content {
   display: flex;
@@ -1381,6 +1482,7 @@ html {
   width: 100%;
   height: 280px;
   object-fit: cover;
+  object-position: 50% 20%;
   border-radius: 30px;
 }
 @media (max-width: 576px) {
