@@ -3,42 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Автовыбор языка при первом визите: uk/ru или часовой пояс Украины → украинская версия,
-         остальные → английская. Не трогает поисковых роботов, переходы внутри сайта
-         и язык, выбранный кнопкой UA/EN. -->
-    <script>
-      (function () {
-        try {
-          if (/bot|crawl|spider|slurp|google|lighthouse|headless/i.test(navigator.userAgent)) return;
-          if (document.referrer.indexOf(location.origin) === 0) return;
-
-          var current = document.documentElement.lang === "en" ? "en" : "uk";
-          var wanted = null;
-          try { wanted = localStorage.getItem("lang"); } catch (e) {}
-
-          if (wanted !== "uk" && wanted !== "en") {
-            var langs = navigator.languages && navigator.languages.length
-              ? navigator.languages
-              : navigator.language ? [navigator.language] : [];
-            // Браузер не сообщил язык — оставляем ту версию, которую открыли
-            if (!langs.length) return;
-
-            // Украинцы с телефоном на английском: узнаём по часовому поясу
-            var tz = "";
-            try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch (e) {}
-            wanted = /^Europe\/(Kyiv|Kiev|Zaporozhye|Uzhgorod|Simferopol)$/.test(tz) ? "uk" : "en";
-
-            for (var i = 0; i < langs.length; i++) {
-              if (/^(uk|ru)(-|$)/i.test(langs[i])) { wanted = "uk"; break; }
-            }
-          }
-
-          if (wanted !== current) {
-            location.replace((wanted === "en" ? "/en/" : "/") + location.search + location.hash);
-          }
-        } catch (e) {}
-      })();
-    </script>
+    <!-- Автовыбор языка (/ua/ или /en/) — до стилей, чтобы сработал раньше показа страницы -->
+    <script src="/js/lang.js"></script>
     <!-- ===== SEO & Open Graph ===== -->
     <meta
       name="description"
@@ -56,7 +22,7 @@
     <link
       rel="alternate"
       hreflang="uk"
-      href="https://nutrition-page-anna-kovalenko.netlify.app/"
+      href="https://nutrition-page-anna-kovalenko.netlify.app/ua/"
     />
     <link
       rel="alternate"
@@ -275,7 +241,7 @@
               target="_blank"
               >Book Now</a
             >
-            <a href="/" class="header__lang-switch">EN</a>
+            <a href="/ua/" class="header__lang-switch">EN</a>
           </div>
         </nav>
 

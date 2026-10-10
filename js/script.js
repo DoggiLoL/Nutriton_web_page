@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // === 1.3 ЗАПОМИНАЕМ ЯЗЫК, ВЫБРАННЫЙ КНОПКОЙ UA/EN ===
-    // Скрипт автовыбора в <head> потом уже не перебрасывает человека на другую версию
+    // Автовыбор языка (js/lang.js) потом уже не перебрасывает человека на другую версию
     const langSwitch = document.querySelector('.header__lang-switch');
     if (langSwitch) {
         langSwitch.addEventListener('click', () => {
