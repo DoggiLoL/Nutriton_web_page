@@ -46,7 +46,9 @@ document.addEventListener('DOMContentLoaded', () => {
         .about__title, .about__description, .stat-item, 
         .pillar-card, .about__quote, .programs__title, 
         .program-card, .programs__banner, .checklist__item,
-        .prices__title, .price-category__header, .price-card, .price-notes
+        .prices__title, .price-category__header, .price-card, .price-notes,
+        .programs__photo, .prices__strip, .reviews__header,
+        .faq__header, .faq__photo
     `);
 
     // Сразу добавляем им класс скрытия
@@ -209,5 +211,156 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+
+    // Если в системе отключены анимации — счётчик не запускаем
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+
+    // === 7. СЧЁТЧИК ЦИФР (15+) ===
+    // Анимируются только числовые значения, "PSY" / "КПТ" не трогаем
+    const counters = Array.from(document.querySelectorAll('.stat-item__num'))
+        .filter(el => /^\d+/.test(el.textContent.trim()));
+
+    if (!reduceMotion && counters.length) {
+        const DURATION = 1500; // мс
+
+        const runCounter = (el) => {
+            const [, num, suffix] = el.textContent.trim().match(/^(\d+)(.*)$/);
+            const target = parseInt(num, 10);
+            const start = performance.now();
+
+            const tick = (now) => {
+                const progress = Math.min((now - start) / DURATION, 1);
+                const eased = 1 - Math.pow(1 - progress, 3); // замедление к концу
+                el.textContent = Math.round(target * eased) + suffix;
+                if (progress < 1) requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+        };
+
+        const counterObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    runCounter(entry.target);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.6 });
+
+        counters.forEach(el => counterObserver.observe(el));
+    }
+
+
+    // === 8. ПАДАЮЩИЕ ЛИСТИКИ НА ПЕРВОМ ЭКРАНЕ ===
+    // Прозрачный холст на фоне hero — за текстом и фото
+    const hero = document.querySelector('.hero');
+
+    if (!reduceMotion && hero) {
+        const canvas = document.createElement('canvas');
+        canvas.className = 'leaves';
+        canvas.setAttribute('aria-hidden', 'true');
+        hero.prepend(canvas);
+
+        const ctx = canvas.getContext('2d');
+        const COLORS = ['#00723c', '#2e8b57', '#6aa84f', '#9bc26b'];
+        let width = 0;
+        let height = 0;
+        let leaves = [];
+
+        const random = (min, max) => min + Math.random() * (max - min);
+
+        const createLeaf = (startAnywhere) => ({
+            x: random(0, width),
+            y: startAnywhere ? random(-height * 0.1, height) : random(-60, -20),
+            size: random(8, 15),             // половина длины листа, px
+            speed: random(0.35, 0.8),        // скорость падения, px за кадр
+            sway: random(0.4, 1.2),          // размах покачивания вбок
+            swayPhase: random(0, Math.PI * 2),
+            swaySpeed: random(0.008, 0.018),
+            rotation: random(0, Math.PI * 2),
+            spin: random(-0.012, 0.012),
+            flip: random(0, Math.PI * 2),    // переворот листа "в 3D"
+            flipSpeed: random(0.015, 0.035),
+            color: COLORS[Math.floor(Math.random() * COLORS.length)],
+            alpha: random(0.3, 0.55),
+        });
+
+        const resize = () => {
+            const dpr = Math.min(window.devicePixelRatio || 1, 2);
+            width = hero.clientWidth;
+            height = hero.clientHeight;
+            canvas.width = width * dpr;
+            canvas.height = height * dpr;
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+            // На телефоне листиков меньше — чтобы не мешали тексту
+            const count = width <= 768 ? 9 : 16;
+            while (leaves.length < count) leaves.push(createLeaf(true));
+            leaves.length = count;
+        };
+
+        const drawLeaf = (leaf) => {
+            const s = leaf.size;
+            ctx.save();
+            ctx.translate(leaf.x, leaf.y);
+            ctx.rotate(leaf.rotation);
+            // Сужение = лист поворачивается ребром; не даём стать совсем плоским "чёрточкой"
+            const f = Math.cos(leaf.flip);
+            ctx.scale(f >= 0 ? Math.max(f, 0.3) : Math.min(f, -0.3), 1);
+            ctx.globalAlpha = leaf.alpha;
+
+            // Форма листа: две дуги от кончика к черешку
+            ctx.fillStyle = leaf.color;
+            ctx.beginPath();
+            ctx.moveTo(0, -s);
+            ctx.quadraticCurveTo(s * 0.85, -s * 0.15, 0, s);
+            ctx.quadraticCurveTo(-s * 0.85, -s * 0.15, 0, -s);
+            ctx.fill();
+
+            // Прожилка по центру
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.45)';
+            ctx.lineWidth = 0.8;
+            ctx.beginPath();
+            ctx.moveTo(0, -s * 0.8);
+            ctx.lineTo(0, s * 1.15);
+            ctx.stroke();
+
+            ctx.restore();
+        };
+
+        const animate = () => {
+            ctx.clearRect(0, 0, width, height);
+
+            leaves.forEach((leaf, i) => {
+                leaf.swayPhase += leaf.swaySpeed;
+                leaf.y += leaf.speed;
+                leaf.x += Math.sin(leaf.swayPhase) * leaf.sway;
+                leaf.rotation += leaf.spin;
+                leaf.flip += leaf.flipSpeed;
+
+                // Улетел за нижний край или вбок — начинаем сверху заново
+                if (leaf.y > height + 30 || leaf.x < -40 || leaf.x > width + 40) {
+                    leaves[i] = createLeaf(false);
+                }
+                drawLeaf(leaf);
+            });
+
+            if (heroVisible) requestAnimationFrame(animate);
+        };
+
+        // Когда первый экран прокручен — останавливаем анимацию, вернулись — запускаем
+        let heroVisible = false;
+        new IntersectionObserver(([entry]) => {
+            const wasVisible = heroVisible;
+            heroVisible = entry.isIntersecting;
+            if (heroVisible && !wasVisible) requestAnimationFrame(animate);
+        }).observe(hero);
+
+        // Высота hero может меняться (шрифты, поворот телефона) — подгоняем холст
+        new ResizeObserver(resize).observe(hero);
+        resize();
+    }
+
 
 });
