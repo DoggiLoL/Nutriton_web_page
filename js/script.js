@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .program-card, .programs__banner, .checklist__item,
         .prices__title, .price-category__header, .price-card, .price-notes,
         .programs__photo, .prices__strip, .reviews__header,
-        .faq__header, .faq__photo
+        .faq__header, .faq__photo, .thanks__img
     `);
 
     // Сразу добавляем им класс скрытия

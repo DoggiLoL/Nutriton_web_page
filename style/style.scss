@@ -2050,3 +2050,29 @@ html {
     margin-top: 40px;
   }
 }
+
+// --- THANKS (картинка-благодарность в конце страницы) ---
+.thanks {
+  padding: 0 0 100px;
+  background-color: #f2f0eb; // Продолжает фон блока FAQ, без шва
+
+  // На телефоне подтягиваем к FAQ, чтобы отступы сверху и снизу были одинаковыми (по 60px)
+  @media (max-width: 576px) {
+    padding-bottom: 60px;
+    margin-top: -40px;
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 30px;
+    box-shadow: 0 20px 50px rgba($color-olive, 0.08);
+
+    @media (max-width: 576px) {
+      border-radius: 20px;
+    }
+  }
+}
