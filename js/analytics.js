@@ -6,7 +6,7 @@
 // Пока ID не вписаны — модуль ничего не делает и баннер не показывается.
 (function () {
     var GA_ID = 'G-4BQ4K2ZT7H';     // Google Analytics 4: идентификатор потока, вид G-XXXXXXXXXX
-    var CLARITY_ID = '';  // Microsoft Clarity: ID проекта, 10 символов
+    var CLARITY_ID = 'yw4ga1uu4s';  // Microsoft Clarity: ID проекта, 10 символов
 
     if (!GA_ID && !CLARITY_ID) return;
 
