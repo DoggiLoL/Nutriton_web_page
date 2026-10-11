@@ -2128,3 +2128,94 @@ html {
     }
   }
 }
+
+// --- COOKIES: ссылка в подвале и баннер согласия (создаёт js/analytics.js) ---
+.footer__legal {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 18px;
+}
+
+.footer__cookies {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  cursor: pointer;
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.cookie-banner {
+  position: fixed;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  z-index: 1100; // выше шапки и мобильного меню
+  width: calc(100% - 32px);
+  max-width: 760px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 18px 22px;
+  background: #fff;
+  border: 1px solid rgba($color-olive, 0.15);
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+  animation: cookie-banner-in 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    bottom: 12px;
+    padding: 16px 18px;
+  }
+
+  &__text {
+    flex: 1;
+    font-size: 0.82rem;
+    line-height: 1.55;
+    color: lighten($color-text, 15%);
+  }
+
+  &__actions {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+
+    @media (max-width: 640px) {
+      .cookie-banner__btn {
+        flex: 1;
+      }
+    }
+  }
+
+  &__btn {
+    padding: 10px 22px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+  }
+}
+
+@keyframes cookie-banner-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cookie-banner {
+    animation: none;
+  }
+}
