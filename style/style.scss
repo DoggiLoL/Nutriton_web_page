@@ -2181,6 +2181,11 @@ html {
     font-size: 0.82rem;
     line-height: 1.55;
     color: lighten($color-text, 15%);
+
+    a {
+      color: $color-olive;
+      text-underline-offset: 3px;
+    }
   }
 
   &__actions {
@@ -2217,5 +2222,128 @@ html {
 @media (prefers-reduced-motion: reduce) {
   .cookie-banner {
     animation: none;
+  }
+}
+
+// --- PRIVACY POLICY (страницы /ua/privacy/ и /en/privacy/) ---
+.legal-header {
+  border-bottom: 1px solid rgba($color-olive, 0.12);
+  background-color: #fff;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 72px;
+  }
+
+  &__logo {
+    font-size: 1.6rem;
+    color: $color-olive;
+    text-decoration: none;
+  }
+
+  &__lang {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: $color-olive;
+    text-underline-offset: 3px;
+  }
+}
+
+.legal {
+  background-color: $color-bg;
+  padding: 60px 0 90px;
+
+  @media (max-width: 576px) {
+    padding: 40px 0 60px;
+  }
+
+  &__container {
+    max-width: 800px;
+  }
+
+  &__title {
+    font-size: 3rem;
+    margin-bottom: 8px;
+
+    span {
+      color: $color-olive;
+      font-style: italic;
+    }
+
+    @media (max-width: 576px) {
+      font-size: 2.3rem;
+    }
+  }
+
+  &__updated {
+    font-size: 0.85rem;
+    color: lighten($color-text, 30%);
+    margin-bottom: 40px;
+  }
+
+  h2 {
+    font-size: 1.7rem;
+    margin: 40px 0 14px;
+  }
+
+  p,
+  li {
+    font-size: 0.95rem;
+    color: lighten($color-text, 10%);
+  }
+
+  p + p,
+  p + ul,
+  ul + p {
+    margin-top: 12px;
+  }
+
+  ul {
+    padding-left: 22px;
+
+    li + li {
+      margin-top: 8px;
+    }
+  }
+
+  a {
+    color: $color-olive;
+    text-underline-offset: 3px;
+    overflow-wrap: anywhere;
+  }
+
+  code {
+    font-size: 0.85em;
+    padding: 1px 6px;
+    border-radius: 4px;
+    background-color: rgba($color-olive, 0.08);
+  }
+
+  // Кнопка «налаштування cookies» в тексте — выглядит как ссылка.
+  // Показывает её js/analytics.js; без него остаётся текстовая подсказка.
+  &__cookies {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    color: $color-olive;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+
+    &[hidden] {
+      display: none;
+    }
+
+    &:not([hidden]) + .legal__cookies-fallback {
+      display: none;
+    }
+  }
+
+  &__back {
+    margin-top: 50px;
   }
 }

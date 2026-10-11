@@ -1988,6 +1988,10 @@ html {
   line-height: 1.55;
   color: rgb(82.25, 82.25, 82.25);
 }
+.cookie-banner__text a {
+  color: #00723c;
+  text-underline-offset: 3px;
+}
 .cookie-banner__actions {
   display: flex;
   gap: 10px;
@@ -2019,6 +2023,109 @@ html {
   .cookie-banner {
     animation: none;
   }
+}
+.legal-header {
+  border-bottom: 1px solid rgba(0, 114, 60, 0.12);
+  background-color: #fff;
+}
+.legal-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 72px;
+}
+.legal-header__logo {
+  font-size: 1.6rem;
+  color: #00723c;
+  text-decoration: none;
+}
+.legal-header__lang {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #00723c;
+  text-underline-offset: 3px;
+}
+
+.legal {
+  background-color: #fbfbf8;
+  padding: 60px 0 90px;
+}
+@media (max-width: 576px) {
+  .legal {
+    padding: 40px 0 60px;
+  }
+}
+.legal__container {
+  max-width: 800px;
+}
+.legal__title {
+  font-size: 3rem;
+  margin-bottom: 8px;
+}
+.legal__title span {
+  color: #00723c;
+  font-style: italic;
+}
+@media (max-width: 576px) {
+  .legal__title {
+    font-size: 2.3rem;
+  }
+}
+.legal__updated {
+  font-size: 0.85rem;
+  color: rgb(120.5, 120.5, 120.5);
+  margin-bottom: 40px;
+}
+.legal h2 {
+  font-size: 1.7rem;
+  margin: 40px 0 14px;
+}
+.legal p,
+.legal li {
+  font-size: 0.95rem;
+  color: rgb(69.5, 69.5, 69.5);
+}
+.legal p + p,
+.legal p + ul,
+.legal ul + p {
+  margin-top: 12px;
+}
+.legal ul {
+  padding-left: 22px;
+}
+.legal ul li + li {
+  margin-top: 8px;
+}
+.legal a {
+  color: #00723c;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+.legal code {
+  font-size: 0.85em;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background-color: rgba(0, 114, 60, 0.08);
+}
+.legal__cookies {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: #00723c;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.legal__cookies[hidden] {
+  display: none;
+}
+.legal__cookies:not([hidden]) + .legal__cookies-fallback {
+  display: none;
+}
+.legal__back {
+  margin-top: 50px;
 }
 
 /*# sourceMappingURL=style.css.map */

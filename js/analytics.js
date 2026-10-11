@@ -18,12 +18,16 @@
             accept: 'Accept',
             decline: 'Decline',
             label: 'Cookie consent',
+            more: 'Privacy Policy',
+            moreUrl: '/en/privacy/',
         }
         : {
             text: 'Ми використовуємо cookies для анонімної статистики відвідувань (Google Analytics, Microsoft Clarity), щоб робити сайт кращим. Змінити вибір можна будь-коли — «Налаштування cookies» внизу сторінки.',
             accept: 'Прийняти',
             decline: 'Відхилити',
             label: 'Згода на cookies',
+            more: 'Політика конфіденційності',
+            moreUrl: '/ua/privacy/',
         };
 
     var readConsent = function () {
@@ -127,7 +131,12 @@
             '<button type="button" class="btn btn--outline cookie-banner__btn" data-consent="denied"></button>' +
             '<button type="button" class="btn btn--filled cookie-banner__btn" data-consent="granted"></button>' +
             '</div>';
-        banner.querySelector('.cookie-banner__text').textContent = TEXT.text;
+        var text = banner.querySelector('.cookie-banner__text');
+        text.textContent = TEXT.text + ' ';
+        var more = document.createElement('a');
+        more.href = TEXT.moreUrl;
+        more.textContent = TEXT.more;
+        text.appendChild(more);
         banner.querySelector('[data-consent="denied"]').textContent = TEXT.decline;
         banner.querySelector('[data-consent="granted"]').textContent = TEXT.accept;
 
