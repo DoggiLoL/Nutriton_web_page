@@ -1,0 +1,18 @@
+// Настройки публикации на Cloudflare (Workers Static Assets).
+// Сайт — обычные файлы без сборки: публикуется корень репозитория как есть.
+// Что НЕ выкладывать на сайт — в .assetsignore.
+{
+  "name": "annaprohealth",
+  "compatibility_date": "2026-10-01",
+  // Адрес annaprohealth.<аккаунт>.workers.dev — нужен, пока не подключён домен
+  "workers_dev": true,
+  // Отдельные адреса для каждой версии не нужны — иначе в сети висят лишние копии сайта
+  "preview_urls": false,
+  "assets": {
+    "directory": "./",
+    // /ua и /ua/index.html → /ua/ (как на Netlify)
+    "html_handling": "auto-trailing-slash",
+    // Несуществующий адрес → наша страница 404.html с кодом 404
+    "not_found_handling": "404-page"
+  }
+}

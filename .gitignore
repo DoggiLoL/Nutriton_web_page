@@ -10,3 +10,6 @@ Thumbs.db
 
 # Node (on the off-chance npm tooling gets added later)
 node_modules/
+
+# Локальные файлы wrangler (Cloudflare)
+.wrangler/

@@ -1,0 +1,17 @@
+# Что не выкладывать на сайт при публикации на Cloudflare (формат как у .gitignore)
+
+# Служебные файлы git и редактора
+.git
+.github
+.gitignore
+.claude
+.vscode
+node_modules
+.wrangler
+
+# Настройки публикации
+.assetsignore
+wrangler.jsonc
+
+# Исходник стилей — браузеру нужен только скомпилированный style.css
+style/*.scss
