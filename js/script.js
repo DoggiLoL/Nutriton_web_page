@@ -374,4 +374,52 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
+    // === 9. ПЕРЕКЛЮЧАТЕЛЬ ВАЛЮТЫ (только на английской версии) ===
+    // У цены в разметке: data-usd="55" data-eur="50". Без JS видны доллары.
+    // По умолчанию: часовой пояс Европы → EUR, остальные → USD. Выбор запоминается.
+    const currencySwitch = document.querySelector('.currency-switch');
+
+    if (currencySwitch) {
+        const CURRENCIES = ['usd', 'eur'];
+        const buttons = currencySwitch.querySelectorAll('.currency-switch__btn');
+        const priced = document.querySelectorAll('[data-usd], [data-template]');
+
+        const format = (amount, currency) =>
+            new Intl.NumberFormat('en', {
+                style: 'currency',
+                currency: currency.toUpperCase(),
+                maximumFractionDigits: 0,
+            }).format(amount);
+
+        const apply = (currency) => {
+            priced.forEach(el => {
+                const amount = el.dataset[currency];
+                // Цена ещё не задана (например, фото-дневник) — оставляем текст из разметки
+                if (!amount) return;
+                const price = format(Number(amount), currency);
+                el.textContent = el.dataset.template ? el.dataset.template.replace('{price}', price) : price;
+            });
+            buttons.forEach(btn => btn.setAttribute('aria-pressed', String(btn.dataset.currency === currency)));
+        };
+
+        let initial = null;
+        try { initial = localStorage.getItem('currency'); } catch (e) {}
+        if (!CURRENCIES.includes(initial)) {
+            let tz = '';
+            try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) {}
+            initial = tz.startsWith('Europe/') ? 'eur' : 'usd';
+        }
+
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                apply(btn.dataset.currency);
+                try { localStorage.setItem('currency', btn.dataset.currency); } catch (e) {}
+            });
+        });
+
+        apply(initial);
+        currencySwitch.hidden = false;
+    }
+
+
 });

@@ -2076,3 +2076,55 @@ html {
     }
   }
 }
+
+// Переключатель валюты USD / EUR (только на английской версии)
+.currency-switch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  margin: -20px auto 50px;
+  padding: 5px 5px 5px 18px;
+  border: 1px solid rgba($color-olive, 0.25);
+  border-radius: 50px;
+  background: #fff;
+
+  // [hidden] перебивается display:flex — возвращаем скрытие явно
+  &[hidden] {
+    display: none;
+  }
+
+  &__label {
+    font-size: 0.8rem;
+    color: lighten($color-text, 30%);
+    margin-right: 6px;
+  }
+
+  &__btn {
+    font: inherit;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 8px 18px;
+    border: none;
+    border-radius: 50px;
+    background: transparent;
+    color: $color-olive;
+    cursor: pointer;
+    transition: background-color 0.25s ease, color 0.25s ease;
+
+    &:hover {
+      background: rgba($color-olive, 0.08);
+    }
+
+    &[aria-pressed="true"] {
+      background: $color-olive;
+      color: #fff;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-olive;
+      outline-offset: 2px;
+    }
+  }
+}
