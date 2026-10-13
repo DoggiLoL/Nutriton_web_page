@@ -1,0 +1,7 @@
+# Короткие ссылки для соцсетей (Cloudflare читает этот файл при публикации).
+# Короткий адрес → главная с UTM-меткой, чтобы в статистике было видно, откуда пришёл человек.
+# 302 — временный: метку можно поменять позже, браузеры не запомнят старую.
+/ig  /?utm_source=instagram&utm_medium=social&utm_campaign=bio  302
+/fb  /?utm_source=facebook&utm_medium=social&utm_campaign=profile  302
+/ig/  /?utm_source=instagram&utm_medium=social&utm_campaign=bio  302
+/fb/  /?utm_source=facebook&utm_medium=social&utm_campaign=profile  302
