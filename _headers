@@ -1,0 +1,12 @@
+# Защитные заголовки для всех страниц (Cloudflare читает этот файл при публикации).
+# nosniff — браузер не «угадывает» тип файла (защита от подмены содержимого)
+# Referrer-Policy — чужим сайтам передаётся только адрес сайта, без конкретной страницы
+# X-Frame-Options — сайт нельзя встроить в чужую страницу (защита от «подложных» кнопок)
+# Permissions-Policy — сайту не нужны камера, микрофон, геолокация и оплата
+# Strict-Transport-Security — только HTTPS: браузер год не будет пробовать открыть сайт по http
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+  Strict-Transport-Security: max-age=31536000

@@ -1393,21 +1393,29 @@ html {
 .reviews__dots {
   display: flex;
   justify-content: center;
-  gap: 8px;
-  margin-top: 32px;
+  margin-top: 24px;
   flex-wrap: wrap;
 }
 .reviews__dot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.reviews__dot::before {
+  content: "";
   width: 8px;
   height: 8px;
   border-radius: 50%;
   background: rgba(0, 114, 60, 0.25);
-  border: none;
-  cursor: pointer;
-  padding: 0;
   transition: all 0.3s;
 }
-.reviews__dot--active {
+.reviews__dot--active::before {
   background: #00723c;
   width: 24px;
   border-radius: 4px;
@@ -1480,13 +1488,13 @@ html {
 }
 .footer__oferta {
   font-size: 0.78rem;
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(255, 255, 255, 0.55);
   text-decoration: underline;
   text-underline-offset: 3px;
   transition: color 0.2s;
 }
 .footer__oferta:hover {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.85);
 }
 .footer__logo {
   font-family: "Cormorant Garamond", serif;
@@ -1602,7 +1610,7 @@ html {
 }
 .footer__copy, .footer__made {
   font-size: 0.78rem;
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(255, 255, 255, 0.55);
 }
 
 .faq {
