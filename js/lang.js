@@ -10,20 +10,20 @@
 // Главная "/" — страница выбора языка: людей всегда отправляет на /ua/ или /en/.
 // На /ua/ и /en/ срабатывает только при заходе извне (переходы внутри сайта не трогаем).
 // Поисковых роботов не трогает нигде — они видят все версии.
-(function () {
-    var isRoot = location.pathname === '/' || location.pathname === '/index.html';
-    var PATHS = { uk: '/ua/', en: '/en/' };
+(() => {
+    const isRoot = location.pathname === '/' || location.pathname === '/index.html';
+    const PATHS = { uk: '/ua/', en: '/en/' };
 
     try {
         if (/bot|crawl|spider|slurp|google|lighthouse|headless/i.test(navigator.userAgent)) return;
-        if (!isRoot && document.referrer.indexOf(location.origin) === 0) return;
+        if (!isRoot && document.referrer.startsWith(location.origin)) return;
 
-        var current = isRoot ? null : document.documentElement.lang === 'en' ? 'en' : 'uk';
-        var wanted = null;
+        const current = isRoot ? null : document.documentElement.lang === 'en' ? 'en' : 'uk';
+        let wanted = null;
         try { wanted = localStorage.getItem('lang'); } catch (e) {}
 
         if (!PATHS[wanted]) {
-            var langs = navigator.languages && navigator.languages.length
+            const langs = navigator.languages?.length
                 ? navigator.languages
                 : navigator.language ? [navigator.language] : [];
 
@@ -32,13 +32,11 @@
                 if (!isRoot) return;
                 wanted = 'uk';
             } else {
-                var tz = '';
+                let tz = '';
                 try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) {}
-                wanted = /^Europe\/(Kyiv|Kiev|Zaporozhye|Uzhgorod|Simferopol)$/.test(tz) ? 'uk' : 'en';
-
-                for (var i = 0; i < langs.length; i++) {
-                    if (/^(uk|ru)(-|$)/i.test(langs[i])) { wanted = 'uk'; break; }
-                }
+                const isUkraineTz = /^Europe\/(Kyiv|Kiev|Zaporozhye|Uzhgorod|Simferopol)$/.test(tz);
+                const isUkOrRu = langs.some(l => /^(uk|ru)(-|$)/i.test(l));
+                wanted = isUkOrRu || isUkraineTz ? 'uk' : 'en';
             }
         }
 
